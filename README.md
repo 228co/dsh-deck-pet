@@ -23,14 +23,24 @@
 
 ## 快速开始（在 Deck 上）
 
+**装插件（两种都行）**
+
+* 从 Release 直接下载：
+  [`dsh-deck-pet.zip`](https://github.com/228co/dsh-deck-pet/releases/latest/download/dsh-deck-pet.zip)
+  → Decky 设置 → **Install Plugin from ZIP file**
+* 或者在 Decky 设置里 **Install Plugin from URL**，粘这个直链（以后发新版直接覆盖安装）：
+  `https://github.com/228co/dsh-deck-pet/releases/latest/download/dsh-deck-pet.zip`
+
+**然后四步用起来**
+
 1. 装好 [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader)，设置里打开 **Developer Mode**
-2. Decky → 设置 → **Install Plugin from ZIP file** → 选 `dsh-deck-pet.zip`
-3. 打开 QAM 里的「DSH 鲸鱼娘桌宠」，按顺序点：
+2. 打开 QAM 里的「DSH 鲸鱼娘桌宠」，按顺序点：
    - ① 安装运行时（Node + dsh CLI，约 60 MB）
    - ② 安装鲸鱼娘插件到 web profile（会去 GitHub 拉 `dsh-whale-girl-live2d`）
    - ③ 启动 DSH 服务（`127.0.0.1:3080`）
    - ④ 让桌宠悬浮在屏幕上（第一次会下 Electron，约 100 MB）
-4. 想打字聊天：QAM 里点「在 QAM 里看她（完整界面）」
+3. 想打字聊天：QAM 里点「在 QAM 里看她（完整界面）」
+4. 想换模型：QAM 设置页里改 provider / 模型名 / API Base / API Key
 
 详细步骤、截图/语音用法、换 API、排错见 **[docs/安装与使用.md](docs/安装与使用.md)**；
 能做到什么程度、哪些必须上机验证见 **[docs/架构与限制.md](docs/架构与限制.md)**。

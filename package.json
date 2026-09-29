@@ -1,6 +1,6 @@
 {
   "name": "dsh-deck-pet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Steam Deck (Decky Loader) plugin: DSH harness + whale girl Live2D pet with screenshot/voice/game-master persona",
   "type": "module",
   "scripts": {
