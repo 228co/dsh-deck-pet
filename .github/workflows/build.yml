@@ -10,6 +10,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+# 发 Release 要写权限（新仓库默认的 GITHUB_TOKEN 是只读的，缺这段会报
+# "Resource not accessible by integration"）
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
