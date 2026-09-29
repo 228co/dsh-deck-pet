@@ -1,0 +1,4 @@
+# 仓库里统一 LF，避免在 Windows 上开发、在 SteamOS 上跑时出现换行符问题
+* text=auto eol=lf
+*.png binary
+*.jpg binary

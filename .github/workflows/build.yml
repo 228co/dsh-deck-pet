@@ -1,0 +1,64 @@
+name: build
+
+# 每次推代码都编一遍前端并打出 Decky 插件 zip；
+# 打 tag（v*）时自动把 zip 挂到 Release 上 —— 这样在 Deck 上可以直接用
+# 「Install Plugin from URL」填 Release 里的 zip 直链安装。
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: 装依赖
+        run: pnpm install --no-frozen-lockfile
+
+      - name: 类型检查
+        run: pnpm exec tsc --noEmit
+
+      - name: 构建前端 bundle
+        run: pnpm run build
+
+      - name: Python 语法检查
+        run: python3 -m py_compile main.py
+
+      - name: 打成 Decky 插件 zip
+        run: |
+          set -euo pipefail
+          NAME=dsh-deck-pet
+          STAGE="out/$NAME"
+          rm -rf out
+          mkdir -p "$STAGE/dist"
+          cp dist/index.js "$STAGE/dist/"
+          cp main.py plugin.json package.json README.md LICENSE "$STAGE/"
+          cp -r defaults overlay docs "$STAGE/"
+          rm -rf "$STAGE/overlay/node_modules"
+          ( cd out && zip -qr "$NAME.zip" "$NAME" )
+          unzip -l "out/$NAME.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dsh-deck-pet-plugin-zip
+          path: out/dsh-deck-pet.zip
+
+      - name: 打 tag 时发 Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: out/dsh-deck-pet.zip
+          generate_release_notes: true

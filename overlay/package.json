@@ -1,0 +1,8 @@
+{
+  "name": "dsh-deck-pet-overlay",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Transparent always-on-top shell for the DSH whale girl pet on SteamOS",
+  "main": "main.js",
+  "license": "MIT"
+}

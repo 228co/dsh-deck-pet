@@ -1,0 +1,11 @@
+{
+  "name": "DSH 鲸鱼娘桌宠",
+  "author": "Andersen216 + DSH Deck port",
+  "flags": ["debug"],
+  "api_version": 1,
+  "publish": {
+    "tags": ["dsh", "live2d", "pet", "ai", "screenshot", "voice"],
+    "description": "在 Steam Deck 上跑 DSH（DeepSeek Harness）+ 鲸鱼娘 Live2D 桌宠：Game Mode 里截图问攻略、语音提问、桌宠悬浮在游戏上，模型 API 可换。",
+    "image": "https://opengraph.githubassets.com/1/Andersen216/dsh-whale-girl-live2d"
+  }
+}
